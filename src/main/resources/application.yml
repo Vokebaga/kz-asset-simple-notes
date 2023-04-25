@@ -1,0 +1,33 @@
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  application:
+    name: learning-project
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.PostgreSQL10Dialect}
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:learning}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari: # read more on hikari, connection configuration to have not less 1 and not more than 2
+      idle-timeout: 120000
+      minimum-idle: 1
+      maximum-pool-size: 2
+  flyway:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:1 5432}/${DB_NAME:ashyq}?application_name=ashyq
+    user: ${DB_MIGRATION_USER:postgres}
+    password: ${DB_MIGRATION_PASS:postgres}
+    enabled: ${FLYWAY_ENABLED:false}
+    baseline-on-migrate: ${FLYWAY_BASE_LINE:true}
+    validate-on-migrate: ${FLYWAY_VALIDATE:true}
+    out-of-order: ${FLYWAY_OUT_OF_ORDER:false}
+    placeholders:
+      application_user: ${DB_USER:postgres}

@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.9'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'kz.asset'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:${lombok_version}",
+            "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation "org.projectlombok:lombok:${lombok_version}"
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation "org.springframework.boot:spring-boot-starter-tomcat"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.projectlombok:lombok"
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.postgresql:postgresql:42.5.1'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testAnnotationProcessor group: "org.projectlombok", "name": "lombok", version: "${lombok_version}"
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
